@@ -17,7 +17,7 @@ public class UserDAO {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.print("드라이버 로딩 성공");
+			
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
@@ -28,9 +28,7 @@ public class UserDAO {
 
 		try {
 			conn = DriverManager.getConnection(url, db_id, db_pw);
-			if (conn != null) {
-				System.out.println("DB 연결 성공");
-			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,7 +42,7 @@ public class UserDAO {
 			int cnt = psmt.executeUpdate();
 
 			if (cnt > 0) {
-				System.out.println("회원가입 성공");
+				System.out.println("회원가입에 성공하였습니다! \n 이제 게임을 즐기러 가보실까요 ~~?");
 			} else {
 				System.out.println("회원가입 실패");
 			}
@@ -53,7 +51,6 @@ public class UserDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("회원가입");
 
 	}
 
@@ -61,7 +58,7 @@ public class UserDAO {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("드라이버 로딩 성공");
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -72,9 +69,7 @@ public class UserDAO {
 
 		try {
 			conn = DriverManager.getConnection(url, db_id, db_pw);
-			if (conn != null) {
-				System.out.println("DB 연결 성공");
-			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -134,20 +129,18 @@ public class UserDAO {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("드라이버 로딩 성공");
+			
 		} catch (ClassNotFoundException e) {
-
 			e.printStackTrace();
 		}
+		
 		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 		String db_id = "campus_e_0516_4";
 		String db_pw = "smhrd4";
 
 		try {
 			conn = DriverManager.getConnection(url, db_id, db_pw);
-			if (conn != null) {
-				System.out.print("DB 연결 성공");
-			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -159,18 +152,21 @@ public class UserDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				{
-					String result = rs.getString(1);
+					
+					String result = rs.getString("PW");
 					if (result.equals(dto.getPw())) {
 						System.out.println("로그인 성공");
+						System.out.println(dto.getId() + "님 환영합니다!!!");
 					} else {
 						System.out.println("로그인 실패");
+						dto.setId("");
+						dto.setPw("");
 					}
 
-				}
+				
 
 				// lee ayenggoon에 해당하는 이름은!!입니다.
-				System.out.println(dto.getId() + "님 환영합니다!!!");
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -195,7 +191,6 @@ public class UserDAO {
 		}
 	}
 
-	
 	public ArrayList<String[]> ranking() {
 		ArrayList<String[]> result = new ArrayList<String[]>();
 
@@ -223,10 +218,9 @@ public class UserDAO {
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String[] rank = {rs.getString("rownum"),rs.getString("ID"),rs.getString("aprice")};
+				String[] rank = { rs.getString("rownum"), rs.getString("ID"), rs.getString("aprice") };
 				result.add(rank);
 			}
-
 
 		} catch (SQLException e) {
 			e.printStackTrace();
