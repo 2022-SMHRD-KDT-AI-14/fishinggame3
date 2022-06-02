@@ -83,7 +83,6 @@ public class Game {
 								break;
 								// 보호종 3마리 뽑으면 게임종료
 							}
-
 							break;
 						}
 

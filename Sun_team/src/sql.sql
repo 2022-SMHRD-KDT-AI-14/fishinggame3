@@ -1,3 +1,4 @@
+
 creat table rank
 (id varchar2(20),
 score number(10)not null,
