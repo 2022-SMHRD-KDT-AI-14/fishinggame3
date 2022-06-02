@@ -3,10 +3,11 @@ package end;
 public class EndMainTest {
 
 	public static void main(String[] args) {
-		EndMainTest.King();
-		EndMainTest.Wedding();
-		EndMainTest.sadEnding();
-		EndMainTest.Meteo();
+//		EndMainTest.King();
+//		EndMainTest.Wedding();
+//		EndMainTest.sadEnding();
+//		EndMainTest.Meteo();
+		EndMainTest.Garbage();
 	}
 	// Á¡¼ö ³¬½Ã¿Õ
 	public static void King(){

@@ -45,6 +45,7 @@ public class Shop {
 
 	public void Shop(String ID) {
 		// DB 연결
+		MusicList.MusicShop();
 		login();
 		ShopEnter();
 		System.out.println("상점에 오신 걸 환영합니다! 제가 준비 한 물건을 보세요. ");
@@ -56,6 +57,7 @@ public class Shop {
 
 			System.out.println("[1] 릴 낚시대 (2000원) [2] 고급 릴 낚시대 (3000원) [3] 전설의 강태공 낚시대 (5000원) [4] 나가기>> ");
 			// 상점에서 선택한 메뉴 번호를 input 변수에 저장
+			
 			int input = sc.nextInt();
 			if (input == 1) {
 				System.out.println("릴 낚시대를 선택했습니다.");
@@ -74,8 +76,8 @@ public class Shop {
 							// 소지금 money 변수에 저장 후 소지금과 아이템 가격 비교 후 구매 및 비구매 갈림길
 							int money = rs.getInt("MONEY");
 
-							if (money >= 20) {
-								ShopUpdate((money - 20), input, ID);
+							if (money >= 2000) {
+								ShopUpdate((money - 2000), input, ID);
 								// 소지금 업데이트 및 아이템 업데이트
 								System.out.println("릴 낚시대를 구매하였습니다!");
 							} else {
